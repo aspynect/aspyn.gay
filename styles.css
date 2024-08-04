@@ -1,0 +1,5 @@
+body {
+    cursor: url("assets/normal.cur"), auto;
+    background-color: #ff77ff;
+    min-height: 100vh;
+}
