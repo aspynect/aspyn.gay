@@ -2,4 +2,5 @@ body {
     cursor: url("assets/normal.cur"), auto;
     background-color: #ff77ff;
     min-height: 100vh;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
 }
