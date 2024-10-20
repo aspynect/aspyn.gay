@@ -4,3 +4,16 @@ body {
     min-height: 100vh;
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
 }
+
+#badges {
+    text-align: center;
+}
+
+#badges > a {
+    text-decoration : none
+}
+
+#badges img {
+    width: 88px;
+    height: 33px;
+}
