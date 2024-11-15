@@ -5,15 +5,42 @@ body {
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
 }
 
-#badges {
+#footer {
+    margin-top: 20px;
     text-align: center;
 }
 
-#badges > a {
+.badges > a {
     text-decoration : none
 }
 
-#badges img {
+.badges img {
     width: 88px;
     height: 31px;
+}
+
+#intro {
+    border-style:double;
+    border-color:purple;
+    border-width: 5px;
+    padding-left: 10px;
+    max-width: 400px;
+}
+
+#navbar {
+    overflow: hidden;
+}
+
+#navbar > .left {
+    float: left;
+}
+
+#navbar > .right {
+    float: right;
+}
+
+@media only screen and (max-width: 600px) {
+    #navbar > .right {
+        display:none;
+    }
 }
