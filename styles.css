@@ -5,7 +5,7 @@ body {
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
 }
 
-#footer {
+footer {
     margin-top: 20px;
     text-align: center;
 }
@@ -27,20 +27,20 @@ body {
     max-width: 400px;
 }
 
-#navbar {
+nav {
     overflow: hidden;
 }
 
-#navbar > .left {
+nav > .left {
     float: left;
 }
 
-#navbar > .right {
+nav > .right {
     float: right;
 }
 
 @media only screen and (max-width: 600px) {
-    #navbar > .right {
+    nav > .right {
         display:none;
     }
 }

@@ -2,6 +2,7 @@
 
 (function oneko() {
   const nekoEl = document.createElement("div");
+  nekoEl.ariaHidden = True
   let nekoPosX = window.innerWidth/4*3;
   let nekoPosY = window.innerHeight/2;
   let mousePosX = window.innerWidth/4*3;
