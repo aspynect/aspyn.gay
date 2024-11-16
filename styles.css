@@ -91,7 +91,7 @@ nav > .right {
 }
 
 @media screen and (max-width: 650px){
-    .container{
+    .mosaic{
         display: block;
     }
     .tile{
