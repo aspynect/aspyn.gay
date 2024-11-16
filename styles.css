@@ -19,13 +19,22 @@ footer {
     height: 31px;
 }
 
-#intro {
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.infobox {
     border-style:double;
     border-color:purple;
     border-width: 5px;
     padding-left: 10px;
     padding-right: 10px;
     max-width: 400px;
+    min-width: 200px;
+    margin-left: 1px;
+    margin-right: 4px;
+    margin-bottom: 4px;
 }
 
 nav {
