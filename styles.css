@@ -3,15 +3,20 @@ body {
     background-color: #ff77ff;
     min-height: 100vh;
     font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+    margin: 0;
+}
+
+main, footer {
+    margin:8px;
 }
 
 footer {
-    margin-top: 20px;
     text-align: center;
 }
 
 .badges a {
-    text-decoration : none
+    text-decoration: none;
+    display: inline-block;
 }
 
 .badges img {
@@ -41,8 +46,9 @@ nav {
     overflow: hidden;
     position: sticky;
     top: 0;
-    background-color: #ff77ff;
-    padding-top:2px;
+    background-color: #FF4CFF;
+    padding:8px;
+    line-height: 0;
 }
 
 nav > .left {
@@ -53,7 +59,7 @@ nav > .right {
     float: right;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     nav > .right {
         display:none;
     }
