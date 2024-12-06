@@ -31,7 +31,7 @@ footer {
 
 .infobox {
     border-style:double;
-    border-color:purple;
+    border-color: purple;
     border-width: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -49,6 +49,8 @@ nav {
     background-color: #FF4CFF;
     padding:8px;
     line-height: 0;
+    border-style: groove;
+    border-color: purple;
 }
 
 nav > .left {
