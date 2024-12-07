@@ -123,8 +123,7 @@ pre.sourceCode {
     color:white;
     max-width: fit-content;
 
-    white-space: pre-wrap;
-    word-break: keep-all;
+    overflow-x: auto;
 }
 
 code .at{
