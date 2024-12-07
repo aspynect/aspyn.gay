@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aspyn blog: fixfiles</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+</head>
+<body>
+    <nav class="badges">
+        <div class="left"></divclass>
+            <a rel="noreferrer" href="/">
+                <img src="/88x31.gif" alt="home" title="my website :D">
+            </a>
+            <a rel="noreferrer" href="/blog/">
+                <img src="/assets/badges/nav/blog.gif" alt="blog" title="my blog :D">
+            </a>
+            <a rel="noreferrer" href="/fursona/">
+                <img src="/assets/badges/nav/fursona.gif" alt="fursona" title="my fursona :3">
+            </a>
+        </div>
+        
+        <div class="right">
+            <a rel="noreferrer" href="/s/github.html" target="_blank">
+                <img src="/assets/badges/links/github.gif" alt="github" title="codeing">
+            </a>
+            <a rel="noreferrer" href="/s/bsky.html" target="_blank">
+                <img src="/assets/badges/links/bsky.gif" alt="bluesky" title="butter fly app">
+            </a>
+            <a rel="noreferrer" href="/s/ao3.html" target="_blank">
+                <img src="/assets/badges/links/ao3.gif" alt="archive of our own" title="silly fanfic">
+            </a>
+            <a rel="noreferrer" href="/s/youtube.html" target="_blank">
+                <img src="/assets/badges/links/youtube.gif" alt="youtube" title="you tube">
+            </a>
+        </div>
+    </nav>
+    <main>
+        <h1 id="fixfiles-in-discord">fixfiles in discord</h1>
+        <h3 id="section">11/29/24</h3>
+        <h3 id="words-3438">Words: 3438</h3>
+        <p>today i finished implementing my fixfiles feature into <a
+        href="https://github.com/aspynect/aspyn-utils" target="_blank">aspyn-utils</a>.</p>
+        <h2 id="premise">premise</h2>
+        <p>the core of this part of the project is to create a more convenient
+        solution to the common problem of someone sending a file that can’t be
+        viewed in discord (particularly commonly video and audio).</p>
+        <p>formerly, there were two solutions to this problem: 1. download the
+        file, use ffmpeg to fix it, send it back in chat 2. tell the person
+        sending the file to fix it themselves</p>
+        <p>neither of these options are <em>good</em>, especially if anyone
+        involved is a mobile user, or not particularly tech savvy in
+        general.</p>
+        <h2 id="idea">idea</h2>
+        <p>discord bots! they’re easily accessible, especially with the recent
+        introduction of user-installed apps, which means i can take my tools
+        with me wherever i go, and context menu commands, which means i can run
+        commands in relation to anybody’s messages, even if the bot is only
+        installed to me and not the server.</p>
+        <p>the idea started with the simple concept of automating what i would
+        do to fix these files myself: 1. download 2. ffmpeg 3. send back. 4.
+        ideally, do not interact with the filesystem</p>
+        <h2 id="problem">problem</h2>
+        <p>i don’t know how to use ffmpeg in python. i’ve never used nor heard
+        of what i now know to be “subprocesses” - and wouldn’t figure this out
+        for an awfully long time after i originally started this idea. spoiler:
+        i was vastly undereducated about a lot of the relevant concepts
+        necessary here and didn’t do a great job of teaching myself.</p>
+        <h2 id="solutions">solution(s)</h2>
+        <h3 id="find-libraries">00 - find libraries</h3>
+        <p>naturally, a few months ago, my first google search was “ffmpeg
+        python”. long story short, this led me down several rabbit holes that
+        only left me more confused than i already was, none of the libraries
+        could do what i wanted to do, especially without interacting with the
+        filesystem.</p>
+        <p>a few more google searches led me to the python library <a
+        href="https://pypi.org/project/pillow/" target="_blank">Pillow</a>, a fork of the Python
+        Imaging Lirary (PIL). This would only help me with images, and stop
+        there in terms of helpfulness, but it’s a start.</p>
+        <p>after a few more hours of banging my head into walls and
+        documentation, i came out with this:</p>
+        <div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app_commands.allowed_installs</span>(guilds<span class="op">=</span><span class="va">True</span>, users<span class="op">=</span><span class="va">True</span>)</span>
+        <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app_commands.allowed_contexts</span>(guilds<span class="op">=</span><span class="va">True</span>, dms<span class="op">=</span><span class="va">True</span>, private_channels<span class="op">=</span><span class="va">True</span>)</span>
+        <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">@tree.context_menu</span>(name<span class="op">=</span><span class="st">&quot;fixfiles&quot;</span>)</span>
+        <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> fixfiles(interaction: discord.Interaction,  message: discord.Message):</span>
+        <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> interaction.response.defer()</span>
+        <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    images <span class="op">=</span> []</span>
+        <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attachment <span class="kw">in</span> message.attachments:</span>
+        <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span> <span class="op">=</span> <span class="cf">await</span> attachment.read()</span>
+        <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> BytesIO(<span class="bu">file</span>) <span class="im">as</span> image_binary:</span>
+        <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">with</span> Image.<span class="bu">open</span>(image_binary) <span class="im">as</span> img:</span>
+        <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                        img <span class="op">=</span> img.convert(<span class="st">&quot;RGBA&quot;</span>)</span>
+        <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">with</span> BytesIO() <span class="im">as</span> output_buffer:</span>
+        <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                            img.save(output_buffer, <span class="bu">format</span><span class="op">=</span><span class="st">&quot;PNG&quot;</span>)</span>
+        <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                            output_buffer.seek(<span class="dv">0</span>)</span>
+        <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                            discord_file <span class="op">=</span> discord.File(fp<span class="op">=</span>output_buffer, filename<span class="op">=</span><span class="st">&quot;converted_image.png&quot;</span>)</span>
+        <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                            images.append(discord_file)</span>
+        <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> interaction.followup.send(files <span class="op">=</span> images)</span></code></pre></div>
+        <p>to be honest? i don’t understand all of what this is actually doing.
+        i’m deferring the interaction response, doing some magic to take the
+        images attached to the interacted message and convert them into PNGs,
+        and then send them back. this worked! …most of the time … with only
+        images. installing the Pillow AVIF extension gave me a little more reach
+        with the files i could take as input, but it was having some issues with
+        preserving transparency and such, and i was still frustratingly far from
+        the thigns i cared the most about - video and audio.</p>
+        <p>clearly i need to go back to the drawing board. alas, i was
+        thoroughly lost and didn’t even know where to start. until months later,
+        this is where the project stagnated.</p>
+        <h3 id="ffmpegging">01 - ffmpegging</h3>
+        <p>in complaining about the fact that i had been stuck on this problem
+        so long, <a href="https://github.com/WamWooWam" target="_blank">my best friend</a>
+        presented me with some new concepts that would help be a starting point
+        for me to implement this properly, and prompted me to break the problem
+        down into smaller parts: 1. launch ffmpeg 2. feed data to ffmpeg 3. pull
+        data from ffmpeg</p>
+        <p>all without touching the filesystem. they then also introduced me to
+        some keywords that would massively help me learn what i need to in order
+        to figure this out: - subprocess - stdin/stdout - pipe</p>
+        <p>after some short research, i figured out that these were all simple
+        concepts. a subprocess allows you to run commands outside of the script,
+        stdin/stdout are the systems in place to input and output from programs
+        (things i’m already familiar with, just given a name and
+        recontextualized), and pipes simply allow you to pass data between
+        programs. i now have the concepts, now to put them together.</p>
+        <p><em>disclaimer: most of the struggle from this point forward is
+        fighting ffmpeg rather than actually trying to figure out the coding
+        problem</em></p>
+        <p>firstly, i would need to lay out how i want to run this:</p>
+        <div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> attachment <span class="kw">in</span> message.attachments:</span>
+        <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">match</span> attachment.content_type.split(<span class="st">&quot;/&quot;</span>)[<span class="dv">0</span>]:</span>
+        <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">&quot;image&quot;</span>:</span>
+        <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="co"># process image into readable image</span></span>
+        <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">&quot;video&quot;</span>:</span>
+        <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="co"># process video into readable video</span></span>
+        <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">&quot;audio&quot;</span>:</span>
+        <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="co"># process audio into a video with placeholder</span></span>
+        <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> _:</span>
+        <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+        <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> interaction.followup.send(files <span class="op">=</span> images)</span></code></pre></div>
+        <p>by using a switch statement to separate whether the input file is an
+        image, a video, an audio, or a file i can’t process, i can write my
+        cases for each of these individual problems without them interfering
+        with each other.</p>
+        <p>the below snippets were my first big steps towards my goal. an ffmpeg
+        command showing how to pipe the input and output for an ffmpeg command,
+        and python code outlining how to run commands using subprocesses.</p>
+        <p><code>ffmpeg -i -f mp3 pipe: -c:a pcm_s16le -f s16le pipe:</code></p>
+        <div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> subprocess <span class="im">import</span> run, PIPE</span>
+        <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> run([<span class="st">&#39;grep&#39;</span>, <span class="st">&#39;f&#39;</span>], stdout<span class="op">=</span>PIPE, <span class="bu">input</span><span class="op">=</span><span class="st">&#39;one</span><span class="ch">\n</span><span class="st">two</span><span class="ch">\n</span><span class="st">three</span><span class="ch">\n</span><span class="st">four</span><span class="ch">\n</span><span class="st">five</span><span class="ch">\n</span><span class="st">six</span><span class="ch">\n</span><span class="st">&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;ascii&#39;</span>)</span></code></pre></div>
+        <p>after playing with the commands, i discovered that
+        <code>-f image2</code> is the option i need to pass in order to get it
+        to output a jpeg file. additionally, i discovered that using
+        <code>pipe:0</code> for stdin and <code>pipe:1</code> for stdout,
+        instead of implicitly defining them with <code>pipe:</code>, i can more
+        effectively ensure that everything is going where i want them to. i
+        realized that gifs are counted as images in discord, and i don’t want to
+        convert them, so i made sure i wouldn’t run this code if a gif was
+        encountered. lastly, i set the extension to “jpg” so the file has an
+        extension that matches its format.</p>
+        <div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="st">&quot;image&quot;</span>:</span>
+        <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> attachment.content_type.split(<span class="st">&quot;/&quot;</span>)[<span class="dv">1</span>] <span class="op">==</span> <span class="st">&quot;gif&quot;</span>:</span>
+        <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+        <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;image2&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    extension <span class="op">=</span> <span class="st">&quot;jpg&quot;</span></span></code></pre></div>
+        <p>next up, video. <a href="https://github.com/char" target="_blank">my girlfriend</a>
+        offered this command to start with for making video work in discord:</p>
+        <p><code>ffmpeg -i $input -c:v h264 -c:a aac -pix_fmt yuv420p -movflags faststart $output.mp4</code></p>
+        <p>after applying this to my pattern and splitting out the command into
+        an array, i got a functional piece of code:</p>
+        <div class="sourceCode" id="cb5"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="st">&quot;video&quot;</span>:</span>
+        <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="st">&quot;-c:v&quot;</span>, <span class="st">&quot;h264&quot;</span>, <span class="st">&quot;-c:a&quot;</span>, <span class="st">&quot;aac&quot;</span>, <span class="st">&quot;-pix_fmt&quot;</span>, <span class="st">&quot;yuv420p&quot;</span>, <span class="st">&quot;-movflags&quot;</span>, <span class="st">&quot;faststart&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;mp4&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    extension <span class="op">=</span> <span class="st">&quot;mp4&quot;</span></span></code></pre></div>
+        <p>audio would prove to be deceptively easy after figuring out my video
+        solution. because my goal is to turn audio files into videos with a
+        placeholder visual for the sake of playback on mobile, i could recycle
+        most of the command, adding only a couple options:</p>
+        <div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="st">&quot;audio&quot;</span>:</span>
+        <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="st">&quot;-loop&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;-r&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;assets/sus.webp&quot;</span>, <span class="st">&quot;-shortest&quot;</span>, <span class="st">&quot;-c:v&quot;</span>, <span class="st">&quot;h264&quot;</span>, <span class="st">&quot;-c:a&quot;</span>, <span class="st">&quot;aac&quot;</span>, <span class="st">&quot;-pix_fmt&quot;</span>, <span class="st">&quot;yuv420p&quot;</span>, <span class="st">&quot;-movflags&quot;</span>, <span class="st">&quot;frag_keyframe+empty_moov+faststart&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;mp4&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    extension <span class="op">=</span> <span class="st">&quot;mp4&quot;</span></span></code></pre></div>
+        <p>the addition of the paramters
+        <code>-loop 1 -r 10 -i assets/sus.webp</code> inserts a still image as
+        the video channel for the output, particularly at 10 fps defined by
+        <code>-r</code>. (note: sus.webp was simply an asset i had readily
+        available)</p>
+        <p>now, escaping the switch statement, i can start actually processing
+        the files. i’ve defined, depending on type: - the command to be run -
+        the extension to give the file</p>
+        <p><code>discord.Attachment</code> has a <code>.read()</code> method
+        that will output its data as a bytes object. thi is the data that i want
+        to pass into the <code>input</code> of <code>subprocess.run()</code> for
+        my ffmpeg command. If the command runs successfully (and by proxy has a
+        <code>.returncode</code> of 0), then i am taking the data outputted in
+        the process’s <code>stdout</code> and passing it into a
+        <code>BytesIO()</code> object, which can then be passed into a
+        <code>discord.File()</code> object. i then append the file to my
+        <code>images</code> array (i should probably rename this but oh well)
+        and continue back through the loop for the next attachment.</p>
+        <div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>attachment_data <span class="op">=</span> <span class="cf">await</span> attachment.read()</span>
+        <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>process <span class="op">=</span> run(command, <span class="bu">input</span> <span class="op">=</span> attachment_data, stdout <span class="op">=</span> PIPE)</span>
+        <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> process.returncode <span class="op">==</span> <span class="dv">0</span>:</span>
+        <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    discord_file <span class="op">=</span> discord.File(fp <span class="op">=</span> BytesIO(process.stdout), filename <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>attachment<span class="sc">.</span>filename<span class="sc">.</span>split(<span class="st">&quot;.&quot;</span>)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">.</span><span class="sc">{</span>extension<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+        <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    images.append(discord_file)</span></code></pre></div>
+        <p>lastly, if at the end of the process there is at least one file in
+        the <code>images</code> array, the bot follows up on the deferred
+        interaction with the fixed files, else it simply says there were no
+        files to be fixed.</p>
+        <div class="sourceCode" id="cb8"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(images) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+        <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> interaction.followup.send(files <span class="op">=</span> images)</span>
+        <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+        <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> interaction.followup.send(<span class="st">&quot;No files to fix&quot;</span>)</span></code></pre></div>
+        <p>there we go! a finished product. this works all well and good, but it
+        can be pushed a little farther.</p>
+        <h2 id="optimization-hardware-acceleration">optimization (hardware
+        acceleration)</h2>
+        <p>once done, my best friend (wam) proposed the idea of hardware
+        accelerating the ffmpeg commands using the gpu on the server he is
+        graciously allowing me to host my projects on. this has two benefits: 1.
+        significantly faster conversions 2. not completely locking up the cpu
+        (which is running several different projects) while converting</p>
+        <p>in order to do this, we made slightly different parameter lists
+        depending on whether the expected gpu device is present or not (so it
+        would still work on my machine while testing):</p>
+        <div class="sourceCode" id="cb9"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hardware <span class="op">=</span> path.exists(<span class="st">&quot;/dev/dri/renderD128&quot;</span>)</span>
+        <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> [<span class="st">&quot;-vaapi_device&quot;</span>, <span class="st">&quot;/dev/dri/renderD128&quot;</span>, <span class="st">&quot;-vf&quot;</span>, <span class="st">&quot;hwupload,scale_vaapi=w=-2:h=&#39;min(720,iw)&#39;:format=nv12&quot;</span>, <span class="st">&quot;-c:v&quot;</span>, <span class="st">&quot;h264_vaapi&quot;</span>, <span class="st">&quot;-b:v&quot;</span>, <span class="st">&quot;1M&quot;</span>] <span class="cf">if</span> hardware <span class="cf">else</span> [<span class="st">&quot;-c:v&quot;</span>, <span class="st">&quot;h264&quot;</span>, <span class="st">&quot;-vf&quot;</span>, <span class="st">&quot;scale=-2:&#39;min(720,iw)&#39;&quot;</span>]</span></code></pre></div>
+        <p><em>note: wow python’s ternary operators are really mickey
+        mouse</em></p>
+        <p><em>note2: we also added an option that scales video down to 720p,
+        and leaves it be if it’s already smaller than 720p</em></p>
+        <p>additionally, we modified the command arrays to accomodate:</p>
+        <div class="sourceCode" id="cb10"><pre
+        class="sourceCode py"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="st">&quot;video&quot;</span>:</span>
+        <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="op">*</span>params, <span class="st">&quot;-c:a&quot;</span>, <span class="st">&quot;aac&quot;</span>, <span class="st">&quot;-pix_fmt&quot;</span>, <span class="st">&quot;yuv420p&quot;</span>, <span class="st">&quot;-movflags&quot;</span>, <span class="st">&quot;frag_keyframe+empty_moov+faststart&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;mp4&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    extension <span class="op">=</span> <span class="st">&quot;mp4&quot;</span></span>
+        <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="st">&quot;audio&quot;</span>:</span>
+        <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="st">&quot;-loop&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;-r&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;assets/sus.webp&quot;</span>, <span class="st">&quot;-shortest&quot;</span>, <span class="op">*</span>params, <span class="st">&quot;-c:a&quot;</span>, <span class="st">&quot;aac&quot;</span>, <span class="st">&quot;-pix_fmt&quot;</span>, <span class="st">&quot;yuv420p&quot;</span>, <span class="st">&quot;-movflags&quot;</span>, <span class="st">&quot;frag_keyframe+empty_moov+faststart&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;mp4&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    extension <span class="op">=</span> <span class="st">&quot;mp4&quot;</span></span></code></pre></div>
+        <p>and now, these conversions run on the gpu, typically fluxuating at
+        ~8x speed!</p>
+        <h3 id="guest-message-from-the-guy">guest message from the guy</h3>
+        <p>hi! wam here with a lil info on hardware acceleration</p>
+        <p>my server is running an intel core i3-3225, a CPU with a whopping 2
+        cores which… wasn’t exactly fast in its day and that day was over 10
+        years ago. so i knew when aspyn came to me with this idea that i’d need
+        to accelerate video encoding in some way, unfortunately that poses some
+        problems by itself</p>
+        <p>intel quicksync video is a finicky beast at the best of times and one
+        thing i’ve come to understand is it doesn’t super enjoy running
+        “headless”, as in, without any display attached. as my server exists as
+        a dell tower in an attic with a wifi router plonked on top, this posed
+        some issues for me.</p>
+        <p>attempting to use the regular <code>-c:v h264_qsv</code> returned
+        peculiar intel media sdk errors, given i frankly didn’t want to deal
+        with intels bullshit that day, and also noting the fact i may eventually
+        switch to hardware more appropriate (maybe even with a dedicated GPU) i
+        decided to look into VAAPI, the cross-vendor solution for hardware video
+        on linux</p>
+        <p>naturally, this also didn’t work but it was firmly my fault this
+        time. in my stupidity i had installed multiple different VA drivers, and
+        ffmpeg was attempting to use the driver for more modern intel graphics
+        found on later generations of their CPUs, meanwhile i was stuck needing
+        the version that talks to the i965 driver but that was just a case of
+        removing one of the conflicting packages. another issue came when it did
+        start working, it started putting out video averaging 8-10mbps, which is
+        fine in most cases but when we’re limited to 10MB file uploads, hardly
+        ideal. this is why there’s an additional 1mbps cap in the hardware
+        parameters</p>
+        <h2 id="discord-sucks-actually">discord sucks actually</h2>
+        <p>so if an attachment doesn’t have a file extension, it doesn’t have a
+        content type! fun! so im using <code>python-magic</code> now</p>
+        <div class="sourceCode" id="cb11"><pre
+        class="sourceCode py"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>attachment_data <span class="op">=</span> <span class="cf">await</span> attachment.read()</span>
+        <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mime <span class="op">=</span> magic.from_buffer(attachment_data, mime <span class="op">=</span> <span class="va">True</span>).split(<span class="st">&quot;/&quot;</span>)</span>
+        <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>contentType <span class="op">=</span> mime[<span class="dv">0</span>]</span>
+        <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>contentExtension <span class="op">=</span> mime[<span class="dv">1</span>]</span></code></pre></div>
+        <p>tada extra work to cover discord being stupid yay</p>
+        <h2 id="final-code">final code</h2>
+        <div class="sourceCode" id="cb12"><pre
+        class="sourceCode py"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app_commands.allowed_installs</span>(guilds<span class="op">=</span><span class="va">True</span>, users<span class="op">=</span><span class="va">True</span>)</span>
+        <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">@app_commands.allowed_contexts</span>(guilds<span class="op">=</span><span class="va">True</span>, dms<span class="op">=</span><span class="va">True</span>, private_channels<span class="op">=</span><span class="va">True</span>)</span>
+        <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">@tree.context_menu</span>(name<span class="op">=</span><span class="st">&quot;fixfiles&quot;</span>)</span>
+        <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> fixfiles(interaction: discord.Interaction,  message: discord.Message):</span>
+        <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> interaction.response.defer()</span>
+        <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    images <span class="op">=</span> []</span>
+        <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    hardware <span class="op">=</span> path.exists(<span class="st">&quot;/dev/dri/renderD128&quot;</span>)</span>
+        <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> [<span class="st">&quot;-vaapi_device&quot;</span>, <span class="st">&quot;/dev/dri/renderD128&quot;</span>, <span class="st">&quot;-vf&quot;</span>, <span class="st">&quot;hwupload,scale_vaapi=w=-2:h=&#39;min(720,iw)&#39;:format=nv12&quot;</span>, <span class="st">&quot;-c:v&quot;</span>, <span class="st">&quot;h264_vaapi&quot;</span>, <span class="st">&quot;-b:v&quot;</span>, <span class="st">&quot;1M&quot;</span>] <span class="cf">if</span> hardware <span class="cf">else</span> [<span class="st">&quot;-c:v&quot;</span>, <span class="st">&quot;h264&quot;</span>, <span class="st">&quot;-vf&quot;</span>, <span class="st">&quot;scale=-2:&#39;min(720,iw)&#39;&quot;</span>]</span>
+        <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attachment <span class="kw">in</span> message.attachments:</span>
+        <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        extension <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+        <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        attachment_data <span class="op">=</span> <span class="cf">await</span> attachment.read()</span>
+        <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        mime <span class="op">=</span> magic.from_buffer(attachment_data, mime <span class="op">=</span> <span class="va">True</span>).split(<span class="st">&quot;/&quot;</span>)</span>
+        <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        contentType <span class="op">=</span> mime[<span class="dv">0</span>]</span>
+        <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        contentExtension <span class="op">=</span> mime[<span class="dv">1</span>]</span>
+        <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> contentType:</span>
+        <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;image&quot;</span>:</span>
+        <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> contentExtension <span class="op">==</span> <span class="st">&quot;gif&quot;</span>:</span>
+        <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+        <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;image2&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>                extension <span class="op">=</span> <span class="st">&quot;jpg&quot;</span></span>
+        <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;video&quot;</span>:</span>
+        <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="op">*</span>params, <span class="st">&quot;-c:a&quot;</span>, <span class="st">&quot;aac&quot;</span>, <span class="st">&quot;-pix_fmt&quot;</span>, <span class="st">&quot;yuv420p&quot;</span>, <span class="st">&quot;-movflags&quot;</span>, <span class="st">&quot;frag_keyframe+empty_moov+faststart&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;mp4&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                extension <span class="op">=</span> <span class="st">&quot;mp4&quot;</span></span>
+        <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;audio&quot;</span>:</span>
+        <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                command <span class="op">=</span> [<span class="st">&quot;ffmpeg&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;pipe:0&quot;</span>, <span class="st">&quot;-loop&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;-r&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;-i&quot;</span>, <span class="st">&quot;assets/sus.webp&quot;</span>, <span class="st">&quot;-shortest&quot;</span>, <span class="op">*</span>params, <span class="st">&quot;-c:a&quot;</span>, <span class="st">&quot;aac&quot;</span>, <span class="st">&quot;-pix_fmt&quot;</span>, <span class="st">&quot;yuv420p&quot;</span>, <span class="st">&quot;-movflags&quot;</span>, <span class="st">&quot;frag_keyframe+empty_moov+faststart&quot;</span>, <span class="st">&quot;-f&quot;</span>, <span class="st">&quot;mp4&quot;</span>, <span class="st">&quot;pipe:1&quot;</span>]</span>
+        <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>                extension <span class="op">=</span> <span class="st">&quot;mp4&quot;</span></span>
+        <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> _:</span>
+        <span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+        <span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+        <span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        process <span class="op">=</span> run(command, <span class="bu">input</span> <span class="op">=</span> attachment_data, stdout <span class="op">=</span> PIPE)</span>
+        <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> process.returncode <span class="op">==</span> <span class="dv">0</span>:</span>
+        <span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>            discord_file <span class="op">=</span> discord.File(fp <span class="op">=</span> BytesIO(process.stdout), filename <span class="op">=</span> <span class="ss">f&quot;</span><span class="sc">{</span>attachment<span class="sc">.</span>filename<span class="sc">.</span>split(<span class="st">&quot;.&quot;</span>)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">.</span><span class="sc">{</span>extension<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+        <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>            images.append(discord_file)</span>
+        <span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(images) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+        <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> interaction.followup.send(files <span class="op">=</span> images)</span>
+        <span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+        <span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> interaction.followup.send(<span class="st">&quot;No files to fix&quot;</span>)</span></code></pre></div>
+        <h2 id="conclusion">conclusion</h2>
+        <p>this was an encredibly beneficial project for me, both in terms of my
+        own education and the effect it will have going forward. always having
+        this tool available to me has already proven to be useful. learning the
+        crucial concepts previously outlined (stdi/o, pipes, subprocesses) have
+        heightened my understanding of programs and expanded my ability to
+        envision how to solve problems on my own.</p>
+    </main>
+    
+    <footer class="badges">
+        <a rel="noreferrer" href="/index.html">
+            <img src="/88x31.gif" alt="aspyn.gay" title="my website :D">
+        </a>
+<!--        <a rel="noreferrer" href="/s/twitter.html" target="_blank">
+            <img src="/assets/badges/links/twitter.gif" alt="twitter" title="x.com the everything app">
+        </a>-->
+        <a rel="noreferrer" href="/s/github.html" target="_blank">
+            <img src="/assets/badges/links/github.gif" alt="github" title="codeing">
+        </a>
+        <a rel="noreferrer" href="/s/bsky.html" target="_blank">
+            <img src="/assets/badges/links/bsky.gif" alt="bluesky" title="butter fly app">
+        </a>
+        <a rel="noreferrer" href="/s/ao3.html" target="_blank">
+            <img src="/assets/badges/links/ao3.gif" alt="archive of our own" title="silly fanfic">
+        </a>
+        <a rel="noreferrer" href="/s/youtube.html" target="_blank">
+            <img src="/assets/badges/links/youtube.gif" alt="youtube" title="you tube">
+        </a>
+
+        <br>
+
+        <a rel="noreferrer" href="https://wamwoowam.co.uk" target="_blank">
+            <img src="https://wamwoowam.co.uk/88x31.gif" alt="wam woo wam" title="my bestie's site <3">
+        </a>
+        <a rel="noreferrer" href="https://kataryn.com" target="_blank">
+            <img src="/assets/badges/friends/kataryn.png" alt="kataryn" title="my wife">
+        </a>
+        <a rel="noreferrer" href="https://kiwis.dev" target="_blank">
+            <img src="/assets/badges/friends/kiwi.gif" alt="kiwi" title="kiwi from wii sports">
+        </a>
+        <a rel="noreferrer" href="https://bsky.app/profile/blipblo.bsky.social" target="_blank">
+            <img src="/assets/badges/friends/blipblo.jpg" alt="blipblo" title="blip blo :D">
+        </a>
+
+        <br>
+
+        <img src="/assets/badges/other/timewithcat.gif" alt="no time spent with a cat is wasted" title="its true">
+        <img src="/assets/badges/other/mikuapproved.gif" alt="miku approved" title="she told me herself">
+        <img src="/assets/badges/other/websitegay.gif" alt="this website is gay" title="because i made it">
+        <img src="/assets/badges/other/virtualdiva.png" alt="hatsune miku, virtual diva" title="our queen">
+        <img src="/assets/badges/other/pridelesbian.gif" alt="lesbian pride" title="i am a lesbian">
+        <img src="/assets/badges/other/prideace.gif" alt="asexual pride" title="i am asexual">
+        <img src="/assets/badges/other/pridetrans.gif" alt="trans pride" title="i am trans">
+        <img src="/assets/badges/other/prideenby.gif" alt="nonbinary pride" title="i am nonbinary">
+        <img src="/assets/badges/other/acab.gif" alt="acab" title="acab means all cops">
+        <img src="/assets/badges/other/piracy.gif" alt="piracy" title="yeah">
+        <img src="/assets/badges/other/ralseidoobie.gif" alt="ralsei smoking a fat doobie" title="ral sei">
+        <img src="/assets/badges/other/proud.gif" alt="proud to be me" title="we stand for the flag">
+        <img src="/assets/badges/other/transgender.gif" alt="trans your gender" title="do it">
+        <img src="/assets/badges/other/transrights.gif" alt="trans rights now" title="pretty please">
+    </footer>
+</body>
+<script src="/kitty/kitty.js"></script>
+</html>
+
