@@ -1,5 +1,6 @@
 # fixfiles in discord
 ### 11/29/24
+### Words: 3438
 today i finished implementing my fixfiles feature into [aspyn-utils](https://github.com/aspynect/aspyn-utils). 
 
 ## premise
