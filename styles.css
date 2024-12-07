@@ -110,3 +110,42 @@ nav > .right {
         margin-bottom: 1rem;
     }
 }
+
+p > code {
+    background-color: #FF4CFF;
+}
+
+pre.sourceCode {
+    border-style:double;
+    border-color: purple;
+    padding:20px;
+    background-color: #161616;
+    color:white;
+    max-width: fit-content;
+
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+code .at{
+    color:rgb(217, 217, 173);
+}
+
+code .va{
+    color:rgb(111, 191, 249);
+}
+
+code .st{
+    color:rgb(197, 148, 124);
+}
+
+code .cf {
+    color:rgb(103, 154, 209);
+}
+
+code .kw {
+    color:rgb(103, 154, 209);
+}
