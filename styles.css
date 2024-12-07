@@ -115,35 +115,15 @@ p > code {
     background-color: #FF4CFF;
 }
 
-pre.sourceCode {
+pre {
     border-style:double;
     border-color: purple;
-    padding:20px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: #161616;
     color:white;
     max-width: fit-content;
-
     overflow-x: auto;
-}
-
-code .at{
-    color:rgb(217, 217, 173);
-}
-
-code .va{
-    color:rgb(111, 191, 249);
-}
-
-code .st{
-    color:rgb(197, 148, 124);
-}
-
-code .cf {
-    color:rgb(103, 154, 209);
-}
-
-code .kw {
-    color:rgb(103, 154, 209);
 }
 
 a:hover {
