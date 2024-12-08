@@ -171,7 +171,7 @@ this fully worked! i got a fully functional perfect paste of my code just as it 
 victory! well, almost.
 
 ### 03 - clipboard inspection
-after i had done all of this process, [mary](https://github.com/mary-ext) suggested that it could be possible to "make a thing that listens to the paste event and grabs the text/html copy of the clipboard". in response to this, [my girlfriend](https://github.com/char) sent [clipboard inspector](https://evercoder.github.io/clipboard-inspector/) and [clipboard viewer](https://tools.simonwillison.net/clipboard-viewer), two tools that did exactly that. these could entirely skip the intermediaries of the doc and the converters, allowing me to simply copy the html out of the clipboard.
+after i had done all of this process, [mary](https://github.com/mary-ext) suggested that it could be possible to "make a thing that listens to the paste event and grabs the text/html copy of the clipboard". in response to this, [my girlfriend](https://github.com/char) sent [clipboard inspector](https://evercoder.github.io/clipboard-inspector/) and [clipboard viewer](https://tools.simonwillison.net/clipboard-viewer), two tools that did exactly that. these could entirely skip the intermediaries of the doc and the converters, allowing me to simply copy the html out of the clipboard. The only extra effort it required is removing the two divs that the code is inside.
 
 this yielded a much simpler and faster process, and one that gave seemingly much more concise html:
 ```html
