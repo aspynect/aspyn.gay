@@ -59,9 +59,9 @@
         <h3 id="pandoc">00 - pandoc</h3>
         <p>in attempts to find something to export my markdown file (what i am
         writing this in) into html that i can put on my website, i came across
-        <a href="https://pandoc.org/">pandoc</a>, a neat document converter. it
+        <a href="https://pandoc.org/" target="_blank">pandoc</a>, a neat document converter. it
         even has a handy <a
-        href="https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vscode-pandoc">vscode
+        href="https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vscode-pandoc" target="_blank">vscode
         plugin</a> that can do it all from a command in the editor.</p>
         <p>this is wonderful and all, but it crucially doesn’t generate the
         colors for you, and… honestly does a pretty terrible job of labelling
@@ -77,8 +77,8 @@
         me to choose the colors myself.</p>
         <h3 id="prism.js">01 - prism.js</h3>
         <p>while troubleshooting this, <a
-        href="https://github.com/annieversary">annie</a> recommended trying <a
-        href="https://prismjs.com/">prism.js</a>. after about 15 minutes of
+        href="https://github.com/annieversary" target="_blank">annie</a> recommended trying <a
+        href="https://prismjs.com/" target="_blank">prism.js</a>. after about 15 minutes of
         tinkering, i got it running in node, and tried using its output in the
         same way the pandoc code would be used.</p>
         <pre><code>
@@ -86,7 +86,7 @@
         </code></pre>
         <p>this yielded much better results, with better coverage in the code,
         and much less code left behind. additionally, i could use <a
-        href="https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css">a
+        href="https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css" target="_blank">a
         theme someone else made</a> for prism to mimic the vscode dark+ theme
         (what i use). however, this still wasn’t good enough for me. it still
         didn’t look as pretty as i wanted it to, but then i took a shower and
@@ -101,7 +101,7 @@
         tags</p>
         <p>this was a great plan, and worked great until step 4. pandoc made
         this harder than it needed to be, and instead i ended up using an <a
-        href="https://wordtohtml.net/">online converter</a> instead. this… just
+        href="https://wordtohtml.net/" target="_blank">online converter</a> instead. this… just
         sort of worked. it exported the text as a bunch of <code>p</code> tags
         with <code>span</code>s instead of them. this meant i had to fix these
         by pulling the <code>span</code>s out of the <code>p</code> tags before
@@ -118,13 +118,13 @@
         <p>victory! well, almost.</p>
         <h3 id="clipboard-inspection">03 - clipboard inspection</h3>
         <p>after i had done all of this process, <a
-        href="https://github.com/mary-ext">mary</a> suggested that it could be
+        href="https://github.com/mary-ext" target="_blank">mary</a> suggested that it could be
         possible to “make a thing that listens to the paste event and grabs the
         text/html copy of the clipboard”. in response to this, <a
-        href="https://github.com/char">my girlfriend</a> sent <a
-        href="https://evercoder.github.io/clipboard-inspector/">clipboard
+        href="https://github.com/char" target="_blank">my girlfriend</a> sent <a
+        href="https://evercoder.github.io/clipboard-inspector/" target="_blank">clipboard
         inspector</a> and <a
-        href="https://tools.simonwillison.net/clipboard-viewer">clipboard
+        href="https://tools.simonwillison.net/clipboard-viewer" target="_blank">clipboard
         viewer</a>, two tools that did exactly that. these could entirely skip
         the intermediaries of the doc and the converters, allowing me to simply
         copy the html out of the clipboard. The only extra effort it required is removing the two divs that the code is inside.</p>
