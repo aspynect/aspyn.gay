@@ -82,7 +82,7 @@ nav > .right {
 }
 
 .tile img:hover{
-    transform: scale(1.05);
+    transform: scale(1.03) rotate(1deg);
     transition: all 0.15s ease-in-out;
 }
 
