@@ -148,3 +148,8 @@ a:hover {
     color:#ff00ff;
     transition: color 0.2s;
 }
+
+#fourohfour {
+    text-align: center;
+    font-size: 60px;
+}
