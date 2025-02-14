@@ -62,7 +62,7 @@
         href="https://bsky.app/profile/aspyn.gay/post/3ldjnm6vezs2o" target="_blank">2025 -
         fully develop brain</a></p>        
     </main>
-    <?php require '../../assets/segments/nav.php';?>
+    <?php require '../../assets/segments/footer.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>
