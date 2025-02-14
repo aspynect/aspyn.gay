@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <?php include './assets/nav.php';?>
+    <?php require './assets/segments/nav.php';?>
     <main>
         <h1>personal code of ethics</h1>
 
@@ -68,7 +68,7 @@
             </li>
         </ol>
     </main>
-    <?php include './assets/footer.php';?>
+    <?php require './assets/segments/footer.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>

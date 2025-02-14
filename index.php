@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <?php include './assets/nav.php';?>
+    <?php require './assets/segments/nav.php';?>
     <main>
         <div id="infoboxcontainer">
             <div class="infobox">
@@ -31,7 +31,7 @@
             </div>
         </div>
     </main>
-    <?php include './assets/footer.php';?>
+    <?php require './assets/segments/footer.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>
