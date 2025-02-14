@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <nav class="replaceme"></nav>
+    <?php include './assets/nav.php';?>
     <main>
         <h1>personal code of ethics</h1>
 
@@ -68,8 +68,7 @@
             </li>
         </ol>
     </main>
-    <footer class="replaceme"></footer>
+    <?php include './assets/footer.php';?>
+    <script src="/kitty/kitty.js"></script>
 </body>
-<script src="/segmenting.js"></script>
-<script src="/kitty/kitty.js"></script>
 </html>
