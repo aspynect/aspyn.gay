@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <nav class="replaceme"></nav>
+    <?php require '../../assets/segments/nav.php';?>
     <main>
         <h1 id="sidequests">2025 sidequests</h1>
         <h3 id="section">12/21/24</h3>
@@ -62,8 +62,7 @@
         href="https://bsky.app/profile/aspyn.gay/post/3ldjnm6vezs2o" target="_blank">2025 -
         fully develop brain</a></p>        
     </main>
-    <footer class="replaceme"></footer>
-    <script src="/segmenting.js"></script>
+    <?php require '../../assets/segments/nav.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>

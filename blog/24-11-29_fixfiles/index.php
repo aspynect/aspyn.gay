@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <nav class="replaceme"></nav>
+        <?php require '../../assets/segments/nav.php';?>
     <main>
         <h1 id="fixfiles-in-discord">fixfiles in discord</h1>
         <h3 id="section">11/29/24</h3>
@@ -317,8 +317,7 @@
         heightened my understanding of programs and expanded my ability to
         envision how to solve problems on my own.</p>
     </main>
-    <footer class="replaceme"></footer>
-    <script src="/segmenting.js"></script>
+    <?php require '../../assets/segments/footer.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>

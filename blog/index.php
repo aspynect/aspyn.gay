@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <nav class="replaceme"></nav>
+    <?php require '../assets/segments/nav.php';?>
     <main>
         <div id="infoboxcontainer">
             <div class="infobox">
@@ -31,8 +31,7 @@
             </div>
         </div>
     </main>
-    <footer class="replaceme"></footer>
-    <script src="/segmenting.js"></script>
+    <?php require '../assets/segments/footer.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>

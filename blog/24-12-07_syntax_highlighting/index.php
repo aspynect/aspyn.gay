@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <nav class="replaceme"></nav>
+        <?php require '../../assets/segments/nav.php';?>
     <main>
         <h1 id="syntax-highlighting-in-html">syntax highlighting in html</h1>
         <h3 id="section">12/07/24</h3>
@@ -110,8 +110,7 @@
         process, honestly kind of fun. plus my code looks pretty now so it’s
         WORTH IT!</p>
     </main>
-    <footer class="replaceme"></footer>
-    <script src="/segmenting.js"></script>
+    <?php require '../../assets/segments/footer.php';?>
     <script src="/kitty/kitty.js"></script>
 </body>
 </html>
