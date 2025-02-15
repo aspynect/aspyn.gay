@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
 </head>
 <body>
-    <?php require './assets/segments/nav.php';?>
+    <?php require '../assets/segments/nav.php';?>
     <main>
         <p id="fourohfour">haiii ur not supposed to be here (403) :3 better luck next time</p>
     </main>
