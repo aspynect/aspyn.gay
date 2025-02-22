@@ -14,6 +14,9 @@
     <a rel="noreferrer" href="/s/youtube.html" target="_blank">
         <img src="/assets/badges/links/youtube.gif" alt="youtube" title="you tube">
     </a>
+    <a rel="noreferrer" href="https://stats.wamwoowam.co.uk/share/JTT6LnqirTM1lfnq/aspyn.gay" target="_blank">
+        <img src="/assets/badges/links/umami.gif" alt="umami" title="statistics tracking">
+    </a>
 
     <br>
 
