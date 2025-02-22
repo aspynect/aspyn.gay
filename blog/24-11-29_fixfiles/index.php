@@ -318,7 +318,7 @@
         envision how to solve problems on my own.</p>
     </main>
     <?php require '../../assets/segments/footer.php';?>
-    <script src="/kitty/kitty.js"></script>
+    <?php require '../../assets/segments/globalscripts.php';?>
 </body>
 </html>
 
