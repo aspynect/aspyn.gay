@@ -57,7 +57,7 @@
         <p>ok that list was shorter than i would have hoped ! but alas education
         is education. the next section is gonna be soooooo sick trust me. but, i
         came into college with 45 credits, and finished in 4 semesters (and a
-        summer term), expedited a little bit by the <a
+        summer term), expedited a little bit by the <a target="_blank"
         href="https://www.erininthemorning.com/p/iowa-legislature-votes-to-strip-trans">iowa
         legislature deciding trans people dont get civil rights anymore on a
         thursday afternoon</a>.</p>
@@ -89,7 +89,7 @@
         weren’t coming back for the second semester. my social struggles came
         back, and for better or worse, i spent more time than ever in my room on
         discord calls. this last semester i met some of the coolest people ever,
-        and i dove a bit into music production (get owned, <a
+        and i dove a bit into music production (get owned, <a target="_blank"
         href="https://aspyn.gay/blog/24-12-21_2025_sidequests/">side quest</a>
         01). in march over my spring break i got the chance to go to england and
         visit my freaking WIFE and it was one of the best experiences ive ever
