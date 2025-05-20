@@ -12,6 +12,12 @@
     <main>
         <div id="infoboxcontainer">
             <div class="infobox">
+                <a href="25-05-18_graduation/"><h1>graduation</h1></a>
+                <p>~ reflecting on my life because i got the dumb piece of paper that says i wasted my money</p>
+                <p>~ 05/18/25</p>
+                <p>~ Words: 941</p>
+            </div>
+            <div class="infobox">
                 <a href="24-12-21_2025_sidequests/"><h1>2025 sidequests</h1></a>
                 <p>~ sidequests for next year because resolutions are stupid</p>
                 <p>~ 12/21/24</p>
