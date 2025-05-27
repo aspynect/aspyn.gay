@@ -12,6 +12,12 @@
     <main>
         <div id="infoboxcontainer">
             <div class="infobox">
+                <a href="25-05-26_skzseattle/"><h1>skz seattle 2025</h1></a>
+                <p>~ stray kids concert with oomfie yippeeee</p>
+                <p>~ 05/26/25</p>
+                <p>~ Words: 806</p>
+            </div>
+            <div class="infobox">
                 <a href="25-05-18_graduation/"><h1>graduation</h1></a>
                 <p>~ reflecting on my life because i got the dumb piece of paper that says i wasted my money</p>
                 <p>~ 05/18/25</p>
