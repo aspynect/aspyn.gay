@@ -57,9 +57,9 @@
         the step right in front of me, genuinely inches away. it was super cool
         hearing the unit songs and some of the newer songs i hadnt heard before
         for the first time, and they played topline too!!! thats my favorite
-        song of theirs :D towards the end when they played the <a
+        song of theirs :D towards the end when they played the <a target="_blank"
         href="https://youtu.be/KPUz3Iq_KbA">video project</a> and brought out
-        the <a
+        the <a target="_blank"
         href="https://x.com/Stray_Kids/status/1926526602952769989">banners</a>
         that my friends worked on, it was super cute and it made me feel really
         happy for the community. after the concert we met up with friends and
