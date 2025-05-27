@@ -13,7 +13,7 @@
         <div id="infoboxcontainer">
             <div class="infobox">
                 <a href="25-05-26_skzseattle/"><h1>skz seattle 2025</h1></a>
-                <p>~ stray kids concert with oomfie yippeeee</p>
+                <p>~ stray kids concert in seattle with oomfie yippeeee what an experience</p>
                 <p>~ 05/26/25</p>
                 <p>~ Words: 806</p>
             </div>
