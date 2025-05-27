@@ -12,7 +12,7 @@
     <main>
         <h1 id="skz-seattle-2025">skz seattle 2025</h1>
         <h3 id="section">5/23/25</h3>
-        <h3 id="words">Words 806</h3>
+        <h3 id="words">Words: 806</h3>
         <h2 id="lifelong-bucket-list-item">lifelong bucket list item ✅</h2>
         <p>this weekend i got to see stray kids while visiting a friend in
         seattle!!! ive been wanting to do this for years, im so happy i finally
