@@ -51,6 +51,7 @@
     <br>
 
     <img src="/assets/badges/other/timewithcat.gif" alt="no time spent with a cat is wasted" title="its true">
+    <img src="/assets/badges/other/paws.gif" alt="made with my own two paws" title="just me :3">
     <img src="/assets/badges/other/mikuapproved.gif" alt="miku approved" title="she told me herself">
     <img src="/assets/badges/other/websitegay.gif" alt="this website is gay" title="because i made it">
     <img src="/assets/badges/other/virtualdiva.png" alt="hatsune miku, virtual diva" title="our queen">
