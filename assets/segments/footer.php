@@ -26,6 +26,9 @@
     <a rel="noreferrer" href="https://kataryn.com" target="_blank">
         <img src="/assets/badges/friends/kataryn.png" alt="kataryn" title="my wife">
     </a>
+    <a rel="noreferrer" href="https://char.lt/" target="_blank">
+        <img src="https://fuckitimjem.neocities.org/icons/badges/charlt.png" alt="charlotte" title="my wife">
+    </a>
     <a rel="noreferrer" href="https://kiwis.dev" target="_blank">
         <img src="/assets/badges/friends/kiwi.gif" alt="kiwi" title="kiwi from wii sports">
     </a>
@@ -42,10 +45,17 @@
         <img src="https://fuckitimjem.neocities.org/icons/badges/jem1.png" alt="jem" title="jem.">
     </a>
     <a rel="noreferrer" href="https://daniboi.dog" target="_blank">
-        <img src="https://daniboi.dog/images/badge.png" alt="dani" title="dani boi">
+        <img src="https://daniboi.dog/images/badge.png" alt="dani" title="dani .">
+    </a>
+    </a>
+    <a rel="noreferrer" href="https://daniboi.dog" target="_blank">
+        <img src="https://fuckitimjem.neocities.org/icons/badges/sioda.png" alt="síoda" title="the other irish one">
+    </a>
+    <a rel="noreferrer" href="https://bugmush.neocities.org/" target="_blank">
+        <img src="https://fuckitimjem.neocities.org/icons/badges/tbd2.png" alt="tobedetermined" title="tbd">
     </a>
     <a rel="noreferrer" href="https://www.tobedetermined.online/" target="_blank">
-        <img src="https://fuckitimjem.neocities.org/icons/badges/tbd2.png" alt="tobedetermined" title="tbd">
+        <img src="https://fuckitimjem.neocities.org/icons/badges/bugmush.png" alt="bugmush" title="bug. mush.">
     </a>
 
     <br>
