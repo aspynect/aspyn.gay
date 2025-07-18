@@ -73,6 +73,7 @@ nav > .right {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 1rem;
+    scrollbar-gutter: stable;
 }
 
 .tile img{
