@@ -20,7 +20,7 @@
             <div class="infobox">
                 <h1>things i did</h1>
                 <p>~ <a href="https://github.com/aspynect/aspyn.gay" target="_blank">aspyn.gay</a> ~ this website :D</p>
-                <p>~ <a href="https://splits.tools/analyzer" target="_blank">splits.tools analyzer</a> ~ analyze livesplit saves and make custom comparisons</p>
+                <p>~ <a href="https://splits.tools" target="_blank">splits.tools</a> ~ analyze livesplit splits files and more speedrunning related tools</p>
                 <p>~ <a href="https://github.com/aspynect/aspyn-utils" target="_blank">aspyn-utils</a> ~ personal user-installed bot for various little things</p>
                 <p>~ <a href="https://github.com/BilliardsAtHome" target="_blank">BilliardsAtHome</a> ~ discord bot and api for wii play billiards bruteforcing project</p>
             </div>
