@@ -23,23 +23,23 @@
     <a rel="noreferrer" href="https://wamwoowam.co.uk" target="_blank">
         <img src="https://wamwoowam.co.uk/88x31.gif" alt="wamwoowam" title="my bestie's site <3">
     </a>
-    <a rel="noreferrer" href="https://kataryn.com" target="_blank">
-        <img src="/assets/badges/friends/kataryn.png" alt="kataryn" title="my wife">
-    </a>
     <a rel="noreferrer" href="https://char.lt/" target="_blank">
         <img src="https://fuckitimjem.neocities.org/icons/badges/charlt.png" alt="charlotte" title="my wife">
     </a>
     <a rel="noreferrer" href="https://kiwis.dev" target="_blank">
         <img src="/assets/badges/friends/kiwi.gif" alt="kiwi" title="kiwi from wii sports">
     </a>
-    <a rel="noreferrer" href="https://uwx.github.io" target="_blank">
-        <img src="https://uwx.github.io/uwx.png" alt="max" title="max ine">
-    </a>
     <a rel="noreferrer" href="https://versary.town" target="_blank">
         <img src="https://versary.town/badges/versarytown.png" alt="annie" title="annie versary">
     </a>
     <a rel="noreferrer" href="https://maia.crimew.gay" target="_blank">
         <img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia" title="yes that one">
+    </a>
+    <a rel="noreferrer" href="https://uwx.github.io" target="_blank">
+        <img src="https://uwx.github.io/uwx.png" alt="max" title="max ine">
+    </a>
+    <a rel="noreferrer" href="https://kataryn.com" target="_blank">
+        <img src="/assets/badges/friends/kataryn.png" alt="kataryn" title="cinder fusic">
     </a>
     <a rel="noreferrer" href="https://fuckitimjem.neocities.org" target="_blank">
         <img src="https://fuckitimjem.neocities.org/icons/badges/jem1.png" alt="jem" title="jem.">
@@ -48,7 +48,7 @@
         <img src="https://daniboi.dog/images/badge.png" alt="dani" title="dani .">
     </a>
     </a>
-    <a rel="noreferrer" href="https://daniboi.dog" target="_blank">
+    <a rel="noreferrer" href="https://sioda.ie/" target="_blank">
         <img src="https://fuckitimjem.neocities.org/icons/badges/sioda.png" alt="síoda" title="the other irish one">
     </a>
     <a rel="noreferrer" href="https://bugmush.neocities.org/" target="_blank">
