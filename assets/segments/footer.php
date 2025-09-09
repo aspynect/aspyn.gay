@@ -50,8 +50,8 @@
     <a rel="noreferrer" href="https://daniboi.dog" target="_blank">
         <img src="https://daniboi.dog/images/badge.png" alt="dani" title="dani .">
     </a>
-    <a rel="noreferrer" href="https://bugmush.neocities.org/" target="_blank">
-        <img src="https://fuckitimjem.neocities.org/icons/badges/bugmush.png" alt="bugmush" title="bug. mush.">
+    <a rel="noreferrer" href="https://bugmu.sh/" target="_blank">
+        <img src="https://bugmu.sh/88x31.png" alt="bugmush" title="bug. mush.">
     </a>
     <a rel="noreferrer" href="https://www.tobedetermined.online/" target="_blank">
         <img src="https://fuckitimjem.neocities.org/icons/badges/tbd2.png" alt="tobedtermined" title="tbd">
