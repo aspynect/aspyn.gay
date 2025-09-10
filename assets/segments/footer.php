@@ -39,7 +39,7 @@
         <img src="https://www.wangleline.com/8831.png" alt="wangleline" title="line bunny">
     </a>
     <a rel="noreferrer" href="https://irselr.neocities.org/" target="_blank">
-        <img src="/assets/badges/iris.gif" alt="iris eller" title="irselr">
+        <img src="/assets/badges/friends/iris.gif" alt="iris eller" title="irselr">
     </a>
     <a rel="noreferrer" href="https://maia.crimew.gay" target="_blank">
         <img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia" title="yes that one">
