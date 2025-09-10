@@ -35,6 +35,12 @@
     <a rel="noreferrer" href="https://versary.town" target="_blank">
         <img src="https://versary.town/badges/versarytown.png" alt="annie" title="annie versary">
     </a>
+    <a rel="noreferrer" href="https://www.wangleline.com/" target="_blank">
+        <img src="https://www.wangleline.com/8831.png" alt="wangleline" title="line bunny">
+    </a>
+    <a rel="noreferrer" href="https://irselr.neocities.org/" target="_blank">
+        <img src="/assets/badges/iris.gif" alt="iris eller" title="irselr">
+    </a>
     <a rel="noreferrer" href="https://maia.crimew.gay" target="_blank">
         <img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia" title="yes that one">
     </a>
