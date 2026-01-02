@@ -19,7 +19,7 @@
         probably gonna be pretty shit in all honesty. but this is my year to
         grow.</p>
         </blockquote>
-        <p>at the start of this year, i said this was my year, and that you
+        <p>at the start of 2025, i said this was my year, and that you
         can’t skip the process, and this year sure was full of process. overall?
         pretty shit year if you look at the small picture, but i’ve never felt
         this set up to have an amazing year going into 2026.</p>
