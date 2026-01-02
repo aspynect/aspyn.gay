@@ -19,15 +19,14 @@
         probably gonna be pretty shit in all honesty. but this is my year to
         grow.</p>
         </blockquote>
-        <p>at the start of 2025, i said this was my year, and that you
+        <p>at the start of 2025 year, i said this was my year, and that you
         can’t skip the process, and this year sure was full of process. overall?
         pretty shit year if you look at the small picture, but i’ve never felt
         this set up to have an amazing year going into 2026.</p>
         <h2 id="recap">01: recap</h2>
         <h3 id="bugmush">bugmush</h3>
-        <p>on january 6th i joined <a
-        href="https://bsky.app/profile/bugmu.sh">bugmush</a>, mainly to hang out
-        with my friends but it also was going to help me with my <a
+        <p>on january 6th i joined <a target="_blank" href="https://bsky.app/profile/bugmu.sh">bugmush</a>, mainly to hang out
+        with my friends but it also was going to help me with my <a target="_blank"
         href="https://aspyn.gay/blog/24-12-21_2025_sidequests/">sidquest</a> to
         stop being scared of the DAW. while i didnt make nearly as much progress
         in this department, it helpedme feel out what i want to get out of music
@@ -38,12 +37,12 @@
         as well as a particularly special someone i’ll talk about more later</p>
         <h3 id="chicago">chicago</h3>
         <p>in february, i spontaneously flew over to chicago to spend two days
-        with my then-girlfriend and <a
+        with my then-girlfriend and <a target="_blank"
         href="https://bsky.app/profile/cinny.umm.gay">my wife</a>, along with a
         metamour. while it was a nice weekend, i do not recommend sleeping 4
         people to a bed.</p>
         <p>in march, i then went back, this time driving with my college friend
-        <a href="https://bsky.app/profile/kennecfox.bsky.social">kenji</a> to
+        <a target="_blank" href="https://bsky.app/profile/kennecfox.bsky.social">kenji</a> to
         see saoirse dream, fraxiom, and leastfavorite! perform live. while there
         i got to meet more of my friends i’d met in bugmush. it was the first
         show i’ve ever been to, and it was so incredible, and it made me want
@@ -71,11 +70,11 @@
         nights in a row, but sometimes the fun is worth it. live your happiest
         life.</p>
         <h3 id="graduation">graduation</h3>
-        <p><a href="https://aspyn.gay/blog/25-05-18_graduation/">i
+        <p><a target="_blank" href="https://aspyn.gay/blog/25-05-18_graduation/">i
         graduated</a>. i don’t recommend spending hundreds of thousands on a
         piece of paper that may not help you in any way</p>
         <h3 id="stray-kids">stray kids</h3>
-        <p><a href="https://aspyn.gay/blog/25-05-26_skzseattle/">i went to a
+        <p><a target="_blank" href="https://aspyn.gay/blog/25-05-26_skzseattle/">i went to a
         stray kids concert</a>. i don’t recommend standing all day in the hot
         sun for a chance at good seats, but it’s worth it once right?</p>
         <h3 id="gdq">gdq</h3>
