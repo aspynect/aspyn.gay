@@ -15,7 +15,7 @@
         <h3 id="words-1639">Words: 1,639</h3>
         <h2 id="i-was-right">00: i was right</h2>
         <blockquote>
-        <p>when i say “this is my year” i dont expect it to be perfect. it’s
+        <p>> when i say “this is my year” i dont expect it to be perfect. it’s
         probably gonna be pretty shit in all honesty. but this is my year to
         grow.</p>
         </blockquote>
