@@ -12,6 +12,12 @@
     <main>
         <div id="infoboxcontainer">
             <div class="infobox">
+                <a href="26-01-01_2025_year_of_setup/"><h1>2025: the year of setup</h1></a>
+                <p>~ i was right. 2025 was my year and it sucked, but the process is being trusted</p>
+                <p>~ 1/1/26</p>
+                <p>~ Words: 1,639</p>
+            </div>
+            <div class="infobox">
                 <a href="25-05-26_skzseattle/"><h1>skz seattle 2025</h1></a>
                 <p>~ stray kids concert in seattle with oomfie yippeeee what an experience</p>
                 <p>~ 05/26/25</p>
