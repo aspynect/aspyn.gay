@@ -35,8 +35,14 @@
     <a rel="noreferrer" href="https://versary.town" target="_blank">
         <img src="https://versary.town/badges/versarytown.png" alt="annie" title="annie versary">
     </a>
+    <a rel="noreferrer" href="https://lyn.pink" target="_blank">
+        <img src="https://lyn.pink/IMG/BADGE.GIF" alt="lyncpk" title="lyh 🥀">
+    </a>
     <a rel="noreferrer" href="https://sapphic.moe" target="_blank">
         <img src="https://sapphic.moe/buttons/sapphic.png" alt="chloe" title="chloe buny">
+    </a>
+    <a rel="noreferrer" href="https://aspen.me.uk" target="_blank">
+        <img src="https://aspen.me.uk/88x31.gif" alt="aspen-ae1" title="the other one...">
     </a>
     <a rel="noreferrer" href="https://www.wangleline.com/" target="_blank">
         <img src="https://www.wangleline.com/8831.png" alt="wangleline" title="line bunny">
