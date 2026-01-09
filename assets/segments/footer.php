@@ -27,7 +27,7 @@
         <img src="https://fuckitimjem.neocities.org/icons/badges/charlt.png" alt="charlotte" title="my wife">
     </a>
     <a rel="noreferrer" href="https://sioda.ie/" target="_blank">
-        <img src="https://fuckitimjem.neocities.org/icons/badges/sioda.png" alt="síoda" title="the other irish one">
+        <img src="https://sioda.ie/88x31.gif" alt="síoda" title="the other irish one (mine <3)">
     </a>
     <a rel="noreferrer" href="https://kiwis.dev" target="_blank">
         <img src="/assets/badges/friends/kiwi.gif" alt="kiwi" title="kiwi from wii sports">
