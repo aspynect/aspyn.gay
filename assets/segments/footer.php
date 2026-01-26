@@ -39,7 +39,7 @@
         <img src="https://versary.town/badges/versarytown.png" alt="annie" title="annie versary">
     </a>
     <a rel="noreferrer" href="https://lyn.pink" target="_blank">
-        <img src="https://lyn.pink/IMG/BADGE.GIF" alt="lyncpk" title="lyh 🥀">
+        <img src="https://lyn.place/cpk/img/badge.gif" alt="lyncpk" title="lyh 🥀">
     </a>
     <a rel="noreferrer" href="https://sapphic.moe" target="_blank">
         <img src="https://sapphic.moe/buttons/sapphic.png" alt="chloe" title="chloe buny">
