@@ -32,6 +32,9 @@
     <a rel="noreferrer" href="https://kiwis.dev" target="_blank">
         <img src="/assets/badges/friends/kiwi.gif" alt="kiwi" title="kiwi from wii sports">
     </a>
+    <a rel="noreferrer" href="https://faejr.gay" target="_blank">
+        <img src="https://faejr.gay/88x31.gif" alt="fae" title="fae junior (the rabbit)">
+    </a>
     <a rel="noreferrer" href="https://versary.town" target="_blank">
         <img src="https://versary.town/badges/versarytown.png" alt="annie" title="annie versary">
     </a>
