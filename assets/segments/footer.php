@@ -38,7 +38,7 @@
     <a rel="noreferrer" href="https://versary.town" target="_blank">
         <img src="https://versary.town/badges/versarytown.png" alt="annie" title="annie versary">
     </a>
-    <a rel="noreferrer" href="https://lyn.pink" target="_blank">
+    <a rel="noreferrer" href="https://lyn.place" target="_blank">
         <img src="https://lyn.place/cpk/img/badge.gif" alt="lyncpk" title="lyh 🥀">
     </a>
     <a rel="noreferrer" href="https://sapphic.moe" target="_blank">
