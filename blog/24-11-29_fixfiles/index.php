@@ -6,6 +6,12 @@
     <title>aspyn blog: fixfiles</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <meta property="og:title" content="fixfiles" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aspyn.gay/blog/24-11-29_fixfiles" />
+    <meta property="og:image" content="https://aspyn.gay/assets/favicon.png" />
+    <meta property="og:description" content="making a discord bot feature to fix files that can't embed, and learning how to solve problems" />
+    <meta name="theme-color" content="#FF00FF" />
 </head>
 <body>
         <?php require '../../assets/segments/nav.php';?>

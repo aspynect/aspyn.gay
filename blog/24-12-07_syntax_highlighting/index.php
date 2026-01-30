@@ -6,6 +6,12 @@
     <title>aspyn blog: syntax highlighting</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <meta property="og:title" content="syntax highlighting" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aspyn.gay/blog/24-12-07_syntax_highlighting" />
+    <meta property="og:image" content="https://aspyn.gay/assets/favicon.png" />
+    <meta property="og:description" content="syntax highlighting code in html, and finding much simpler solutions than the first way that works" />
+    <meta name="theme-color" content="#FF00FF" />
 </head>
 <body>
         <?php require '../../assets/segments/nav.php';?>

@@ -6,6 +6,12 @@
     <title>aspyn blog: 2025 sidequests</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <meta property="og:title" content="2025 sidequests" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aspyn.gay/blog/24-12-21_2025_sidequests" />
+    <meta property="og:image" content="https://aspyn.gay/assets/favicon.png" />
+    <meta property="og:description" content="sidequests for next year because resolutions are stupid" />
+    <meta name="theme-color" content="#FF00FF" />
 </head>
 <body>
     <?php require '../../assets/segments/nav.php';?>

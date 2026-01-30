@@ -6,6 +6,12 @@
     <title>aspyn blog: 2025: the year of setup</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <meta property="og:title" content="2025: the year of setup" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aspyn.gay/blog/26-01-01_2025_year_of_setup" />
+    <meta property="og:image" content="https://aspyn.gay/assets/favicon.png" />
+    <meta property="og:description" content="i was right. 2025 was my year and it sucked, but the process is being trusted" />
+    <meta name="theme-color" content="#FF00FF" />
 </head>
 <body>
     <?php require '../../assets/segments/nav.php';?>

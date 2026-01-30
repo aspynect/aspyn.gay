@@ -6,6 +6,12 @@
     <title>aspyn blog: skz seattle 2025</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <meta property="og:title" content="skz seattle 2025" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aspyn.gay/blog/25-05-26_skzseattle" />
+    <meta property="og:image" content="https://aspyn.gay/assets/favicon.png" />
+    <meta property="og:description" content="stray kids concert in seattle with oomfie yippeeee what an experience" />
+    <meta name="theme-color" content="#FF00FF" />
 </head>
 <body>
     <?php require '../../assets/segments/nav.php';?>

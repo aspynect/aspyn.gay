@@ -6,6 +6,12 @@
     <title>aspyn blog: graduation</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.png">
+    <meta property="og:title" content="graduation" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aspyn.gay/blog/25-05-18_graduation" />
+    <meta property="og:image" content="https://aspyn.gay/assets/favicon.png" />
+    <meta property="og:description" content="reflecting on my life because i got the dumb piece of paper that says i wasted my money" />
+    <meta name="theme-color" content="#FF00FF" />
 </head>
 <body>
     <?php require '../../assets/segments/nav.php';?>
