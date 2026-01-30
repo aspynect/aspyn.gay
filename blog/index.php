@@ -12,6 +12,12 @@
     <main>
         <div id="infoboxcontainer">
             <div class="infobox">
+                <a href="26-01-29_stereo_hearts_media_that_grows_with_you"><h1>stereo hearts: on media that grows with you</h1></a>
+                <p>~ when this song shuffled on over the speakers at work today, i saw it in a way i hadn't ever before</p>
+                <p>~ 1/29/26</p>
+                <p>~ Words: 743</p>
+            </div>
+            <div class="infobox">
                 <a href="26-01-01_2025_year_of_setup/"><h1>2025: the year of setup</h1></a>
                 <p>~ i was right. 2025 was my year and it sucked, but the process is being trusted</p>
                 <p>~ 1/1/26</p>
