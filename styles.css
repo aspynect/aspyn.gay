@@ -18,12 +18,12 @@ footer {
 .badges a {
     text-decoration: none;
     display: inline-block;
-    image-rendering: pixelated;
 }
 
 .badges img {
     width: 88px;
     height: 31px;
+    image-rendering: pixelated;
 }
 
 #infoboxcontainer {
