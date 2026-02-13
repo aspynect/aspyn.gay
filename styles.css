@@ -18,6 +18,7 @@ footer {
 .badges a {
     text-decoration: none;
     display: inline-block;
+    image-rendering: pixelated;
 }
 
 .badges img {
