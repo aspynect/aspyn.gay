@@ -68,9 +68,6 @@
     <a rel="noreferrer" href="https://fuckitimjem.neocities.org" target="_blank">
         <img src="https://fuckitimjem.neocities.org/icons/badges/jem.gif" alt="jem" title="jem.">
     </a>
-    <a rel="noreferrer" href="https://jishisonline.carrd.co/" target="_blank">
-        <img src="https://fuckitimjem.neocities.org/icons/badges/jish.gif" alt="jish" title="jish is on line">
-    </a>
     <a rel="noreferrer" href="https://daniboi.dog" target="_blank">
         <img src="https://daniboi.dog/images/badge.png" alt="dani" title="dani .">
     </a>
