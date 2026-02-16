@@ -62,6 +62,9 @@
     <a rel="noreferrer" href="https://uwx.github.io" target="_blank">
         <img src="https://uwx.github.io/uwx.png" alt="max" title="max ine">
     </a>
+    <a rel="noreferrer" href="https://dykebunny.neocities.org/" target="_blank">
+        <img src="https://dykebunny.neocities.org/cute88x31buttons/rabbitgirlkris88x31.png" alt="kris" title="not deltarune i think">
+    </a>
     <a rel="noreferrer" href="https://kataryn.com" target="_blank">
         <img src="/assets/badges/friends/kataryn.png" alt="kataryn" title="cinder fusic">
     </a>
